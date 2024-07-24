@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="https://telegram.org/js/telegram-web-app.js"></script>
+		<script>
+			function qrHandle(obj){
+				if(obj && typeof(obj.data) === 'string'){
+					Telegram.WebApp.sendData(obj.data);
+					Telegram.WebApp.closeScanQrPopup();
+				}
+				Telegram.WebApp.close();
+			}
+
+			Telegram.WebApp.onEvent('scanQrPopupClosed', qrHandle);
+			Telegram.WebApp.onEvent('qrTextReceived', qrHandle);
+			Telegram.WebApp.showScanQrPopup({});
+		</script>
+	</head>
+	<body>Welcome!!!</body>
+</html>
